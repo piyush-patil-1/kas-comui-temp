@@ -25,7 +25,7 @@ const App = () => {
     setTimeout(() => {
       preloader.style.display = 'none'
       setLoading(false)
-    }, 2000);
+    }, 1000);
   }
 
   useEffect(() => {
@@ -46,8 +46,8 @@ const App = () => {
           <Route path='/chart' element={<Chart />} />
           <Route path='/ui/alerts' element={<Alerts />} />
           <Route path='/ui/buttons' element={<Buttons />} />
-          <Route path='/auth/signin' element={<SignIn />} />
-          <Route path='/auth/signup' element={<SignUp />} />
+          <Route exact path='/auth/signin' element={<SignIn />} />
+          <Route exact path='/auth/signup' element={<SignUp />} />
           <Route path='/auth/ForgotPassword' element={<ForgotPassword />} />
 
         </Routes>
