@@ -12,6 +12,9 @@ import Alerts from './pages/UiElements/Alerts'
 import Buttons from './pages/UiElements/Buttons'
 import SignIn from './pages/Authentication/SignIn'
 import SignUp from './pages/Authentication/SignUp'
+import ForgotPassword from './pages/Authentication/ForgotPassword'
+
+
 
 const App = () => {
   const [loading, setLoading] = useState(true)
@@ -45,6 +48,8 @@ const App = () => {
           <Route path='/ui/buttons' element={<Buttons />} />
           <Route path='/auth/signin' element={<SignIn />} />
           <Route path='/auth/signup' element={<SignUp />} />
+          <Route path='/auth/ForgotPassword' element={<ForgotPassword />} />
+
         </Routes>
       </>
     )
