@@ -37,7 +37,7 @@ const ResetPassword = () => {
                       className='input-box'
                     />
 
-                    <span className='absolute right-4 top-4'>
+                    <span className='icons'>
                       <svg
                         className='fill-current'
                         width='22'
@@ -72,7 +72,7 @@ const ResetPassword = () => {
                       className='input-box'
                     />
 
-                    <span className='absolute right-4 top-4'>
+                    <span className='icons'>
                       <svg
                         className='fill-current'
                         width='22'
