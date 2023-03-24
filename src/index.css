@@ -37,10 +37,10 @@
   background-size: cover;
 }
 .contentStart{
-  @apply justify-center flex py-8 
+  @apply justify-center flex items-center h-screen
 }
 .contentStart-signUp{
-  @apply justify-center flex 
+  @apply justify-center flex items-center h-screen
 }
 .containerBox{
   @apply rounded-sm border  w-9/12 border-stroke bg-white shadow-2xl dark:border-strokedark dark:bg-boxdark 
@@ -61,7 +61,7 @@
   @apply absolute min-w-full min-h-full top-0 max-h-full
 }
 .title{
-  @apply mb-9 text-2xl font-medium text-black dark:text-white sm:text-title-md
+  @apply mb-6 text-title-md2 font-medium text-black dark:text-white sm:text-title-md
 }
 .input-label{
   @apply mb-2.5 block font-medium text-black dark:text-white
