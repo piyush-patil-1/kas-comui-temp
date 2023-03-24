@@ -1,13 +1,41 @@
-import React from 'react'
+import React, { useState } from 'react'
 //import DefaultLayout from '../../layout/DefaultLayout'
 import Breadcrumb from '../../components/Breadcrumb'
 import Logo from '../../images/logo/imagetest.svg'
-import LogoDark from '../../images/logo/image1.png'
 import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+
+//Services
+import { authenticateUser } from '../../sevices/Auth/AuthServices'
+import { login } from '../../utils/AuthUtils'
 
 const SignIn = () => {
+  const navigate = useNavigate()
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [errorMsg, setErrorMsg] = useState('')
+
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    try {
+      if (email.length > 0 && password.length > 0) {
+        const authresponse = await authenticateUser(email, password)
+        if (authresponse) {
+          login(authresponse)
+          navigate('/')
+        } else {
+          setErrorMsg('Invalid Username and Password')
+        }
+      } else {
+        setErrorMsg('Please Enter Username & Password')
+      }
+    } catch (error) {
+      setErrorMsg(error)
+    }
+  }
+
   return (
-     <div className='md:p-16'>
+    <div className="md:p-16">
       {/* <Breadcrumb pageName='Sign In' /> */}
       <div className="containerBox">
         <div className="mainBox">
@@ -17,26 +45,24 @@ const SignIn = () => {
                 <img className="hidden dark:block" src={Logo} alt="Logo" />
               </Link>
               <span className="mt-15 inline-block">
-              <img src={Logo} alt="Logo" />
+                <img src={Logo} alt="Logo" />
               </span>
             </div>
           </div>
 
           <div className="width-right">
             <div className="space-right">
-              <h2 className="title">
-                Sign In
-              </h2>
-              <form>
+              <h2 className="title">Sign In</h2>
+              <form onSubmit={handleSubmit}>
                 <div className="mb-4">
-                  <label className="input-label">
-                    Email
-                  </label>
+                  <label className="input-label">Email</label>
                   <div className="relative">
                     <input
                       type="email"
                       placeholder="Enter your email"
                       className="input-box"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                     />
 
                     <span className="absolute right-4 top-4">
@@ -60,14 +86,14 @@ const SignIn = () => {
                 </div>
 
                 <div className="mb-6">
-                  <label className="input-label">
-                   Password
-                  </label>
+                  <label className="input-label">Password</label>
                   <div className="relative">
                     <input
-                      type="password"
+                      type="current-password"
                       placeholder="6+ Characters, 1 Capital letter"
                       className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
                     />
 
                     <span className="absolute right-4 top-4">
@@ -95,11 +121,10 @@ const SignIn = () => {
                 </div>
 
                 <div className="mb-5">
-                  <input
-                    type="submit"
-                    value="Sign In"
-                    className="btn-main"
-                  />
+                  <input type="submit" value="Sign In" className="btn-main" />
+                  <div className="mt-2 -mb-2 text-meta-1 flex justify-center">
+                    {errorMsg}
+                  </div>
                 </div>
 
                 <button className="btn-secondary">
@@ -138,11 +163,11 @@ const SignIn = () => {
                   </span>
                   Sign in with Google
                 </button>
-                
+
                 <div className="mt-6 text-center">
                   <p>
                     <Link to="/auth/ForgotPassword" className="link">
-                     Forgot Password
+                      Forgot Password
                     </Link>
                   </p>
                 </div>
@@ -161,8 +186,7 @@ const SignIn = () => {
           </div>
         </div>
       </div>
-      </div>
-
+    </div>
   )
 }
 
