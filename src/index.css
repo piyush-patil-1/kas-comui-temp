@@ -30,6 +30,12 @@
   }
 }
 /*Authentication*/
+.bg-body{
+  background-image: url('./images/cover/bgBody.png');
+  background-repeat: no-repeat;
+  height: 100vh;
+  background-size: cover;
+}
 .contentStart{
   @apply justify-center flex py-8 
 }

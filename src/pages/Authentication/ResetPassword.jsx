@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 
 const ResetPassword = () => {
   return (
+    <div className='bg-body'>
     <div className='contentStart'>
     <div className="containerBox">
     <div className="mainBox">
@@ -106,8 +107,8 @@ const ResetPassword = () => {
           </div>
         </div>
       </div>
-      </div>
-
+    </div>
+    </div>
   )
 }
 

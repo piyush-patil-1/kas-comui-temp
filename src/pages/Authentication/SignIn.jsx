@@ -50,6 +50,7 @@ const SignIn = () => {
   }
 
   return (
+    <div className='bg-body'>
     <div className="contentStart">
       <div className="containerBox">
         <div className="mainBox">
@@ -77,7 +78,7 @@ const SignIn = () => {
                   </React.Fragment>
                 ))}
                 <div className="mb-5">
-                  <input type="submit" value="Sign In" className="btn-main" />
+                  <input type="submit" value="Sign In" className="btn-main"  formnovalidate="formnovalidate"  />
                   <div className="mt-2 -mb-2 text-meta-1 flex justify-center">
                     {errorMsg}
                   </div>
@@ -129,7 +130,7 @@ const SignIn = () => {
                 </div>
                 <div></div>
 
-                <div className="mt-6 text-center">
+                <div className="mt-4 text-center">
                   <p>
                     Don’t have any account?{' '}
                     <Link to="/auth/signup" className="link">
@@ -142,6 +143,7 @@ const SignIn = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   )
 }
