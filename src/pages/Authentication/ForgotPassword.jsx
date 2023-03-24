@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 
 const ForgotPassword = () => {
   return (
+    <div className='bg-body'>
      <div className='contentStart'>
         <div className="containerBox">
         <div className="mainBox">
@@ -32,7 +33,6 @@ const ForgotPassword = () => {
                       placeholder="Enter your email"
                       className="input-box"
                     />
-
                     <span className="icons">
                       <svg
                         className="fill-current"
@@ -66,6 +66,7 @@ const ForgotPassword = () => {
         </div>
       </div>
       </div>
+    </div>
 
   )
 }

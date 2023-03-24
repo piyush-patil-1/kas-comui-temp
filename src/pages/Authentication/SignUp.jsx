@@ -61,6 +61,7 @@ const SignUp = () => {
   }
 
   return (
+    <div className='bg-body'>
     <div className="contentStart-signUp">
       <div className="containerBox">
         <div className="mainBox">
@@ -133,7 +134,7 @@ const SignUp = () => {
                   Sign up with Google
                 </button>
 
-                <div className="mt-6 text-center">
+                <div className="mt-4 text-center">
                   <p>
                     Already have an account?{' '}
                     <Link to="/auth/signin" className="link">
@@ -146,6 +147,7 @@ const SignUp = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   )
 }
