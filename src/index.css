@@ -31,7 +31,7 @@
 }
 /*Authentication*/
 .contentStart{
-  @apply justify-center flex py-8
+  @apply justify-center flex py-8 
 }
 .contentStart-signUp{
   @apply justify-center flex 
