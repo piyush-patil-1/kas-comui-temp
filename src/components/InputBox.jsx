@@ -14,7 +14,7 @@ const InputBox = ({ state, handleChange, list }) => {
           onChange={handleChange}
         />
 
-        <span className="absolute right-4 top-4">
+        <span className="icons">
           <svg
             className="fill-current"
             width="22"
