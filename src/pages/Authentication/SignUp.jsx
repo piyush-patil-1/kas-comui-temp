@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 //import Logo from '../../images/logo/logo.svg';
-import Logo from '../../images/logo/imagetest.svg'
+import Logo from '../../images/logo/image.jpg'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 
@@ -45,16 +45,14 @@ const SignUp = () => {
   }
 
   return (
-    <div className="md:p-16">
+    <div className="contentStart-signUp">
       <div className="containerBox">
         <div className="mainBox">
           <div className="width-left">
-            <div className="space-blockLeft">
               <Link className="mb-5.5 inline-block" to="/"></Link>
-              <span className="mt-15 inline-block">
-                <img src={Logo} alt="Logo" />
+              <span className="inline-block">
+                <img src={Logo} alt="Logo" className='image-left' />
               </span>
-            </div>
           </div>
           <div className="width-right">
             <div className="space-right">

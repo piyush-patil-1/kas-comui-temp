@@ -1,22 +1,20 @@
 import React from 'react'
 //import DefaultLayout from '../../layout/DefaultLayout'
-import Logo from '../../images/logo/imagetest.svg'
+import Logo from '../../images/logo/image.jpg'
 import { Link } from 'react-router-dom'
 
 const ForgotPassword = () => {
   return (
-     <div className='md:p-16'>
+     <div className='contentStart'>
         <div className="containerBox">
         <div className="mainBox">
           <div className="width-left">
-            <div className="space-blockLeft">
               <Link className='mb-5.5 inline-block' to='/'>
                 <img className="hidden dark:block" src={Logo} alt="Logo" />
               </Link>
-              <span className="mt-15 inline-block">
-              <img src={Logo} alt="Logo" />
+              <span className="inline-block">
+              <img src={Logo} alt="Logo" className='image-left' />
               </span>
-            </div>
           </div>
           <div className="width-right">
             <div className="space-right">

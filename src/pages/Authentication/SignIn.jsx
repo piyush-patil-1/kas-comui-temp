@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Logo from '../../images/logo/imagetest.svg'
+import Logo from '../../images/logo/image.jpg'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 
@@ -50,22 +50,21 @@ const SignIn = () => {
   }
 
   return (
-    <div className="md:p-16">
+    <div className="contentStart">
       <div className="containerBox">
         <div className="mainBox">
           <div className="width-left">
-            <div className="space-blockLeft">
               <Link className="mb-5.5 inline-block" to="/">
                 <img className="hidden dark:block" src={Logo} alt="Logo" />
               </Link>
-              <span className="mt-15 inline-block">
-                <img src={Logo} alt="Logo" />
+              <span className="inline-block">
+                <img src={Logo} alt="Logo" className='image-left'/>
               </span>
-            </div>
           </div>
 
           <div className="width-right">
             <div className="space-right">
+            <h2 className="text-title-lg font-normal text-primary mb-8">Welcome to KAS Commerce</h2>
               <h2 className="title">Sign In</h2>
               <form onSubmit={handleSubmit}>
                 {signInList.map((list, i) => (

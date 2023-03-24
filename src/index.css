@@ -30,23 +30,32 @@
   }
 }
 /*Authentication*/
+.contentStart{
+  @apply justify-center flex py-8
+}
+.contentStart-signUp{
+  @apply justify-center flex 
+}
 .containerBox{
-  @apply rounded-sm border   border-stroke bg-white shadow-2xl dark:border-strokedark dark:bg-boxdark 
+  @apply rounded-sm border  w-9/12 border-stroke bg-white shadow-2xl dark:border-strokedark dark:bg-boxdark 
 }
 .mainBox{
-  @apply flex flex-wrap items-center bg-gray-platinum
+  @apply flex flex-wrap  bg-gray-platinum
 }
 .width-left{
- @apply hidden w-full xl:block xl:w-1/2 
+ @apply hidden w-full xl:block xl:w-1/2  relative
 }
 .width-right{
   @apply w-full border-stroke dark:border-strokedark xl:w-1/2 xl:border-l-2 bg-white
 }
 .space-right{
-  @apply w-full p-4 sm:p-12.5 xl:p-17.5
+  @apply w-full p-4 sm:px-12.5 pt-2 pb-4 xl:px-17.5 pt-2 pb-4
+}
+.image-left{
+  @apply absolute min-w-full min-h-full top-0 max-h-full
 }
 .title{
-  @apply mb-9 text-2xl font-bold text-black dark:text-white sm:text-title-xl2
+  @apply mb-9 text-2xl font-medium text-black dark:text-white sm:text-title-md
 }
 .input-label{
   @apply mb-2.5 block font-medium text-black dark:text-white
