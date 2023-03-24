@@ -9,7 +9,7 @@ import { createUser } from '../../sevices/Auth/AuthServices'
 
 //Components - Consts
 import InputBox from '../../components/InputBox'
-import { signUpList } from '../../consts/AuthConstants'
+import { signUpInput, EMAIL_REGEX } from '../../consts/AuthConstants'
 
 const SignUp = () => {
   const navigate = useNavigate()
@@ -19,7 +19,9 @@ const SignUp = () => {
     email: '',
     password: '',
     confirmPassword: '',
-  });
+    hasError: false,
+    touched: false,
+  })
   const [errorMsg, setErrorMsg] = useState('')
 
   const handleSubmit = async (event) => {
@@ -36,12 +38,26 @@ const SignUp = () => {
     }
   }
 
-  function handleChange(evt) {
+  const handleChange = (evt) => {
     const value = evt.target.value
+    let hasError = false
+    if (evt.target.name === 'email' && !EMAIL_REGEX.test(value)) {
+      hasError = true
+    }
     setState({
       ...state,
       [evt.target.name]: value,
+      hasError,
     })
+  }
+
+  const blurHandler = (evt) => {
+    const value = evt.target.value
+    if (value)
+      setState({
+        ...state,
+        hasError: false,
+      })
   }
 
   return (
@@ -49,21 +65,22 @@ const SignUp = () => {
       <div className="containerBox">
         <div className="mainBox">
           <div className="width-left">
-              <Link className="mb-5.5 inline-block" to="/"></Link>
-              <span className="inline-block">
-                <img src={Logo} alt="Logo" className='image-left' />
-              </span>
+            <Link className="mb-5.5 inline-block" to="/"></Link>
+            <span className="inline-block">
+              <img src={Logo} alt="Logo" className="image-left" />
+            </span>
           </div>
           <div className="width-right">
             <div className="space-right">
               <h2 className="title">Sign Up</h2>
               <form onSubmit={handleSubmit}>
-                {signUpList.map((list, i) => (
+                {signUpInput.map((list, i) => (
                   <React.Fragment key={i}>
                     <InputBox
                       state={state}
-                      handleChange={handleChange}
                       list={list}
+                      handleChange={handleChange}
+                      onBlur={blurHandler}
                     />
                   </React.Fragment>
                 ))}

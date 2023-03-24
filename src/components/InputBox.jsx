@@ -1,6 +1,6 @@
 import React from 'react'
 
-const InputBox = ({ state, handleChange, list }) => {
+const InputBox = ({ state, handleChange, onBlur, list }) => {
   return (
     <div className="mb-4 -mt-2">
       <label className="input-label">{list.lable}</label>
@@ -13,6 +13,9 @@ const InputBox = ({ state, handleChange, list }) => {
           value={state[`${list.name}`]}
           onChange={handleChange}
         />
+        {state.hasError && (
+          <span className="text-meta-1">{list.errorMessage}</span>
+        )}
       </div>
     </div>
   )

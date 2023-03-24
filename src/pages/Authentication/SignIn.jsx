@@ -9,22 +9,38 @@ import { login } from '../../utils/AuthUtils'
 
 //Components - Consts
 import InputBox from '../../components/InputBox'
-import { signInList } from '../../consts/AuthConstants'
+import { signInInput, EMAIL_REGEX } from '../../consts/AuthConstants'
 
 const SignIn = () => {
   const navigate = useNavigate()
   const [state, setState] = useState({
     email: '',
     password: '',
+    hasError: false,
+    touched: false,
   })
-  const [errorMsg, setErrorMsg] = useState('')
+  const [errorMsg, setErrorMsg] = useState(false)
 
-  function handleChange(evt) {
+  const handleChange = (evt) => {
     const value = evt.target.value
+    let hasError = false
+    if (evt.target.name === 'email' && !EMAIL_REGEX.test(value)) {
+      hasError = true
+    }
     setState({
       ...state,
       [evt.target.name]: value,
+      hasError,
     })
+  }
+
+  const blurHandler = (evt) => {
+    const value = evt.target.value
+    if (value)
+      setState({
+        ...state,
+        hasError: false,
+      })
   }
 
   const handleSubmit = async (event) => {
@@ -67,12 +83,13 @@ const SignIn = () => {
             <h2 className="text-title-lg font-normal text-primary mb-8">Welcome to KAS Commerce</h2>
               <h2 className="title">Sign In</h2>
               <form onSubmit={handleSubmit}>
-                {signInList.map((list, i) => (
+                {signInInput.map((list, i) => (
                   <React.Fragment key={i}>
                     <InputBox
                       state={state}
-                      handleChange={handleChange}
                       list={list}
+                      handleChange={handleChange}
+                      onBlur={blurHandler}
                     />
                   </React.Fragment>
                 ))}
