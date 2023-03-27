@@ -60,7 +60,7 @@ const SignIn = () => {
           navigate('/')
         }
       } else {
-        setErrorMsg('Please enter email and password')
+        setErrorMsg('Please enter your email and password')
       }
     } catch (error) {
       setErrorMsg(error)
@@ -101,18 +101,17 @@ const SignIn = () => {
                       />
                     </React.Fragment>
                   ))}
+                 <div className="errorMessage">
+                      {errorMsg}
+                  </div>
                   <div className="mb-5">
                     <input
                       type="submit"
                       value="Sign In"
                       className="btn-main"
                       formNoValidate="formNoValidate"
-                    />
-                    <div className="mt-2 -mb-2 text-meta-1 flex justify-center">
-                      {errorMsg}
-                    </div>
+                    /> 
                   </div>
-
                   <button className="btn-secondary">
                     <span>
                       <svg

@@ -115,16 +115,15 @@ const SignUp = () => {
                       />
                     </React.Fragment>
                   ))}
-
+                  <div className="errorMessage">
+                      {errorMsg}
+                  </div>
                   <div className="mb-5">
                     <input
                       type="submit"
                       value="Create account"
                       className="btn-main"
                     />
-                    <div className="mt-2 -mb-2 text-meta-1 flex justify-center">
-                      {errorMsg}
-                    </div>
                   </div>
 
                   <button className="btn-secondary">

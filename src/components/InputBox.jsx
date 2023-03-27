@@ -9,7 +9,7 @@ const InputBox = ({ state, handleChange, onBlur, list }) => {
           type={list.type}
           placeholder={list.placeholder}
           name={list.name}
-          className="input-box"
+          className={(list.name === state.errorFor)  ? "input-error" : "input-box"}
           value={state[`${list.name}`]}
           onChange={handleChange}
           onBlur={onBlur}
