@@ -12,8 +12,9 @@ const InputBox = ({ state, handleChange, onBlur, list }) => {
           className="input-box"
           value={state[`${list.name}`]}
           onChange={handleChange}
+          onBlur={onBlur}
         />
-        {state.hasError && (
+        {(list.name === state.errorFor) && state.touched && (
           <span className="text-meta-1">{list.errorMessage}</span>
         )}
       </div>

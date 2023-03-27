@@ -10,56 +10,57 @@ import { login } from '../../utils/AuthUtils'
 
 //Components - Consts
 import InputBox from '../../components/InputBox'
-import { signInInput, EMAIL_REGEX } from '../../consts/AuthConstants'
+import {
+  signInInput,
+  EMAIL_REGEX,
+  PASSWORD_REGEX,
+} from '../../consts/AuthConstants'
 
 const SignIn = () => {
   const navigate = useNavigate()
   const [state, setState] = useState({
     email: '',
     password: '',
-    hasError: false,
     touched: false,
+    errorFor: null,
   })
   const [errorMsg, setErrorMsg] = useState(false)
 
   const handleChange = (evt) => {
     const value = evt.target.value
-    let hasError = false
+    setErrorMsg(false)
+    let errorFor = null
     if (evt.target.name === 'email' && !EMAIL_REGEX.test(value)) {
-      hasError = true
+      errorFor = evt.target.name
+    } else if (evt.target.name === 'password' && !PASSWORD_REGEX.test(value)) {
+      errorFor = evt.target.name
     }
     setState({
       ...state,
       [evt.target.name]: value,
-      hasError,
+      errorFor,
     })
   }
 
-  const blurHandler = (evt) => {
-    const value = evt.target.value
-    if (value)
-      setState({
-        ...state,
-        hasError: false,
-      })
+  const blurHandler = () => {
+    setState({
+      ...state,
+      touched: true,
+    })
   }
 
   const handleSubmit = async (event) => {
+    const {email, password} = state
     event.preventDefault()
     try {
-      if (state.email.length > 0 && state.password.length > 0) {
+      if (email.length > 0 && password.length > 0) {
         const authresponse = await authenticateUser(state.email, state.password)
         if (authresponse?.users?.accessToken) {
           login(authresponse)
           navigate('/')
         }
-        if (authresponse?.message) {
-          setErrorMsg(authresponse.message)
-        } else {
-          setErrorMsg('Invalid Email and Password')
-        }
       } else {
-        setErrorMsg('Please Enter Email and Password')
+        setErrorMsg('Please enter email and password')
       }
     } catch (error) {
       setErrorMsg(error)
@@ -96,16 +97,16 @@ const SignIn = () => {
                         state={state}
                         list={list}
                         handleChange={handleChange}
-                        //onBlur={blurHandler}
+                        onBlur={blurHandler}
                       />
                     </React.Fragment>
                   ))}
-                  <div className={!state.hasError ? 'mb-5' : 'mb-5 opacity-50'}>
+                  <div className="mb-5">
                     <input
                       type="submit"
                       value="Sign In"
                       className="btn-main"
-                      formnovalidate="formnovalidate"
+                      formNoValidate="formNoValidate"
                     />
                     <div className="mt-2 -mb-2 text-meta-1 flex justify-center">
                       {errorMsg}
